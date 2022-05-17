@@ -39,6 +39,9 @@ const recipes: Array<Recipe> = [
   },
   {
     title: "Korv med bröd",
+    description: "När det går att vara ute",
+    ingredients: ["korv", "bröd", "senap", "ketchup", "rostad lök"],
+    steps: ["Grilla", "Ät"],
   },
   {
     title: "Bakpotatis",
@@ -79,11 +82,28 @@ const Home: NextPage<RecipeIndex> = ({ index }) => {
         >
           NEJ, NÅT ANNAT!
         </button>
-        <h3>{recipe.title}</h3>
-        <ol>
-          {recipe.steps &&
-            recipe.steps?.map((step) => <li key={`step_${step}`}>{step}</li>)}
-        </ol>
+        <h3 style={{ marginBottom: 8 }}>{recipe.title}</h3>
+        <p style={{ fontStyle: "italic", color: "#777", marginTop: 0 }}>
+          {recipe.description}
+        </p>
+        <div
+          style={{
+            display: "flex",
+            minWidth: "50%",
+            justifyContent: "space-between",
+          }}
+        >
+          <ul>
+            {recipe.ingredients &&
+              recipe.ingredients?.map((ingredient) => (
+                <li key={`ingredient_${ingredient}`}>{ingredient}</li>
+              ))}
+          </ul>
+          <ol>
+            {recipe.steps &&
+              recipe.steps?.map((step) => <li key={`step_${step}`}>{step}</li>)}
+          </ol>
+        </div>
       </main>
     </div>
   );
